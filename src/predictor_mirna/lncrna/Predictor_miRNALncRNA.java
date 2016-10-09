@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package predictor_mirna.lncrna;
 
+import common_Features.seedMatchPredictor;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -77,7 +73,8 @@ public class Predictor_miRNALncRNA {
 				for(int j = 0; j < lncRNA.size() ; j++){
 					//Formato: miRNA_id LLLL miRNA_code LLLL lncRNA_id LLLL lncRNA_code
 					String str_to_send = miRNA.get(i) + "LLLL" + lncRNA.get(j);
-                                        //System.out.println(str_to_send);
+                                        seedMatchPredictor smp = new seedMatchPredictor();
+                                        smp.sevenMerA1(str_to_send);
 				}
 			}	
 		}   
