@@ -20,7 +20,7 @@ lncRNA -> Secuencia de nucleótidos de long non code RNA
 
 position -> Posición en long non code RNA donde se parea con MRE.
 
-,miRNA,rev_mre,lncRNA,position
+
 */
 public class seedMatchPredictor {
     //Obtiene cadena complementaria

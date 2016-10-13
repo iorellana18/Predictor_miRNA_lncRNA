@@ -45,13 +45,13 @@ public class energyPredictor {
         /////////////////////////////////////////////////
         while ((line = input_buffer.readLine()) != null){
 
-            if (line.indexOf("-") != -1) {System.out.println(seq);
+            if (line.indexOf("-") != -1) {
                 String[] parts = line.split("-");
                 String number = parts[1]; //minimum free energy / free energy ensemble /delta G binding
                 if(number.charAt(number.length()-1)== ')' || number.charAt(number.length()-1)==']'){//Limpia número de paréntesis
                     number=number.substring(0,number.length()-1);
                 }
-                System.out.println(number);
+                
             if (flag == 0) {//-->Mínimum free energy
                 flag++;
                 dg_duplex = Float.parseFloat(number);
@@ -79,7 +79,8 @@ public class energyPredictor {
     }catch(IOException e){
         System.out.println("IOException");
     }
-        
+        accessibilityPredictor ap = new accessibilityPredictor();
+        ap.accessibilityEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
         
     }
 }
