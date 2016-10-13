@@ -4,6 +4,24 @@ package common_Features;
  *
  * @author ian
  */
+
+/*
+Variables importantes:
+miRNA_id -> Identificador de micro RNA
+
+miRNA -> Secuencia de nucleótidos de micro RNA
+
+rev_mre -> Micro RNA Recognition Element invertido, secuencia de nucleótidos de 
+long non code RNA que hace match con la semilla, en dirección 5' - 3'
+
+lncRNA_id -> Identificador de long non code RNA
+
+lncRNA -> Secuencia de nucleótidos de long non code RNA
+
+position -> Posición en long non code RNA donde se parea con MRE.
+
+,miRNA,rev_mre,lncRNA,position
+*/
 public class seedMatchPredictor {
     //Obtiene cadena complementaria
     public String complementSeq(String seq){
@@ -40,7 +58,7 @@ public class seedMatchPredictor {
 	int seed_size = miRNA_seed.length();
         int inf = 0;
 	int sup = seed_size;
-	int pos = 0; //Position of the binding (seed)
+	int position = 0; //Position of the binding (seed)
         String rev_mre,mre;
         
         
@@ -56,17 +74,11 @@ public class seedMatchPredictor {
                         //miRNA Recognition Element
                             mre = rev_lncRNA.substring( (inf-1), (sup+(miRNA.length()-8)) ); //MRE 3'-5'
                             rev_mre = new StringBuilder(mre).reverse().toString(); //MRE 5'-3'
-                            pos = lncRNA_size - sup; 
+                            position = lncRNA_size - sup; 
                             //mre y pos son los diferentes en cada emit
                            //formato de energía requiere mre en dirección 5' - 3' ->rev_mre
-                            System.out.println(miRNA_id);
-                            System.out.println(miRNA);
-                            System.out.println(mre);
-                            System.out.println(rev_mre);
-                            System.out.println(lncRNA_id);
-                            System.out.println(lncRNA);
-                            System.out.println("Posición: "+pos);
-                            System.out.println();
+                            energyPredictor ep = new energyPredictor();
+                            ep.calculate_Energy(miRNA_id,miRNA,rev_mre,lncRNA_id, lncRNA,position);
                     }
                     
             }
@@ -93,7 +105,7 @@ public class seedMatchPredictor {
 	int seed_size = miRNA_seed.length();
         int inf = 0;
 	int sup = seed_size;
-	int pos = 0; 
+	int position = 0; 
         String mre, rev_mre;
         int i=1;
         
@@ -106,18 +118,12 @@ public class seedMatchPredictor {
                     if( (sup+(miRNA.length()-7)) <= rev_lncRNA.length() && (inf-1) >= 0 ){ 
                             mre = rev_lncRNA.substring( (inf-1), (sup+(miRNA.length()-7)) ); //MRE 3'-5'
                             rev_mre = new StringBuilder(mre).reverse().toString(); //MRE 5'-3'
-                            pos = lncRNA_size - sup; 
+                            position = lncRNA_size - sup; 
                             //mre y pos son los diferentes en cada emit
                             //collector.emit(new Values(miRNA_id, miRNA, mre, lncRNA_id, lncRNA, pos));
                             
-                            System.out.println(miRNA_id);
-                            System.out.println(miRNA);
-                            System.out.println(mre);
-                            System.out.println(rev_mre);
-                            System.out.println(lncRNA_id);
-                            System.out.println(lncRNA);
-                            System.out.println("Posición: "+pos);
-                            System.out.println();
+                            energyPredictor ep = new energyPredictor();
+                            ep.calculate_Energy(miRNA_id,miRNA,rev_mre,lncRNA_id, lncRNA,position);
                             
                     }
             }
@@ -144,7 +150,7 @@ public class seedMatchPredictor {
 	int seed_size = miRNA_seed.length();
         int inf = 0;
 	int sup = seed_size;
-	int pos = 0; 
+	int position = 0; 
         String mre,rev_mre;
         int i=1;
         
@@ -157,15 +163,9 @@ public class seedMatchPredictor {
                             mre = rev_lncRNA.substring( (inf-1), (sup+(miRNA.length()-7)) ); //MRE 3'-5'
                             if(mre.charAt(0) == 'A'){
                                 rev_mre = new StringBuilder(mre).reverse().toString(); //MRE 5'-3'
-                                pos = lncRNA_size - sup; 
-                                System.out.println(miRNA_id);
-                                System.out.println(miRNA);
-                                System.out.println(mre);
-                                System.out.println(rev_mre);
-                                System.out.println(lncRNA_id);
-                                System.out.println(lncRNA);
-                                System.out.println("Posición: "+pos);
-                                System.out.println();
+                                position = lncRNA_size - sup; 
+                                energyPredictor ep = new energyPredictor();
+                                ep.calculate_Energy(miRNA_id,miRNA,rev_mre,lncRNA_id,lncRNA,position);
                             }
                             
                     }
@@ -193,7 +193,7 @@ public class seedMatchPredictor {
 	int seed_size = miRNA_seed.length();
         int inf = 0;
 	int sup = seed_size;
-	int pos = 0; //Position of the binding (seed)
+	int position = 0; //Position of the binding (seed)
         String mre,rev_mre;
         int i=1;
         
@@ -207,18 +207,11 @@ public class seedMatchPredictor {
                             if(mre.charAt(0) == 'A'){
                             
                                 rev_mre = new StringBuilder(mre).reverse().toString(); //MRE 5'-3'
-                                pos = lncRNA_size - sup; 
+                                position = lncRNA_size - sup; 
                                 //mre y pos son los diferentes en cada emit
                                 //collector.emit(new Values(miRNA_id, miRNA, mre, lncRNA_id, lncRNA, pos));
-
-                               // System.out.println(miRNA_id);
-                                System.out.println(miRNA);
-                                System.out.println(mre);
-                                System.out.println(rev_mre);
-                                //System.out.println(lncRNA_id);
-                                System.out.println(lncRNA);
-                                System.out.println("Posición: "+pos);
-                                System.out.println();
+                                energyPredictor ep = new energyPredictor();
+                                ep.calculate_Energy(miRNA_id,miRNA,rev_mre,lncRNA_id,lncRNA,position);
                             }
                             
                     }

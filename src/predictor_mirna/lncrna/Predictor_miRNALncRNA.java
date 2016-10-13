@@ -74,7 +74,7 @@ public class Predictor_miRNALncRNA {
 					//Formato: miRNA_id LLLL miRNA_code LLLL lncRNA_id LLLL lncRNA_code
 					String str_to_send = miRNA.get(i) + "LLLL" + lncRNA.get(j);
                                         seedMatchPredictor smp = new seedMatchPredictor();
-                                        smp.sevenMerA1(str_to_send);
+                                        smp.SeedDefault(str_to_send);
 				}
 			}	
 		}   
