@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import predictor_mirna.lncrna.results;
 
 /**
  *
@@ -125,14 +126,14 @@ public class accessibilityPredictor {
             // Show final output
             // Free energy with constraints
             while ((line_ = input_.readLine()) != null){
-                System.out.println(line_);
+                //System.out.println(line_);
                 if ( line_.indexOf("[") != -1) {
                     String[] parts_ = line_.split("\\[");
                     String number_ = parts_[1];
                     number_ = number_.substring(1,number_.length()-1);
                     dg1 = Float.parseFloat(number_);
                     dg1 = dg1*-1.0f;
-                    System.out.println("dg1: " + dg1); //ver que es dg1
+                   // System.out.println("dg1: " + dg1); //ver que es dg1
                 }
             }
             input_.close();
@@ -142,6 +143,8 @@ public class accessibilityPredictor {
 
         dgOpen = dg0 - dg1;
         double formated_dgOpen = Math.round(dgOpen*100.0) / 100.0;
+        results r=new results();
+        r.printResults(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, DG_duplex, DG_binding, formated_dgOpen);
         //falseResults fr = new falseResults();
         //fr.result(mirna_id, mirna, mre, mfe, dg_binding, lncrna_id, gene, formated_dgOpen, position);
         //collector.emit(new Values(mirna_id,mirna,mre,mfe,dg_binding,lncrna_id,gene,formated_dgOpen,position));    
