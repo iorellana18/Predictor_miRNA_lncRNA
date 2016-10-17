@@ -5,6 +5,7 @@
  */
 package common_Features;
 
+import in_site_features.matchCounter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -44,25 +45,19 @@ public class energyPredictor {
         */
         /////////////////////////////////////////////////
         while ((line = input_buffer.readLine()) != null){
-
+            
             if (line.indexOf("-") != -1) {
                 String[] parts = line.split("-");
                 String number = parts[1]; //minimum free energy / free energy ensemble /delta G binding
                 if(number.charAt(number.length()-1)== ')' || number.charAt(number.length()-1)==']'){//Limpia número de paréntesis
                     number=number.substring(0,number.length()-1);
                 }
-                
             if (flag == 0) {//-->Mínimum free energy
                 flag++;
                 dg_duplex = Float.parseFloat(number);
                 dg_duplex = dg_duplex*-1.0f; 
-                //System.out.println(seq);
-                //System.out.println(parts[0]);
-               // falsecounter fc = new falsecounter();/////////////////////
-                //fc.ultimateCounter(seq, parts[0]);
-                //System.out.println("DeltaG duplex: " + dg_duplex + " kcal/mol"); 
-                //falsecounter fc = new falsecounter();
-                //fc.matchCounter(parts[0],seq);/////////////////////
+                matchCounter mc = new matchCounter();
+                mc.counter(seq, parts[0]);              
             }
             else if (flag == 1){ //-->Free energy of ensemble
                 flag++;

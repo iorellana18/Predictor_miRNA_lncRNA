@@ -36,7 +36,7 @@ public class results {
         OutputStream o;
         if (result_ddg < 0) {
             try{
-                o = new FileOutputStream("/home/ian/Escritorio/results.csv",true);
+                o = new FileOutputStream("results.csv",true);
                 //mir_id, lncRNA transcript id, position of seed in transcript, dG duplex, dG binding, dG open, ddG
                 o.write( (miRNA_id+","+lncRNA_id+","+position_string+","+duplex+","+binding+","+open+","+result+"\n").getBytes() );
                 o.close();
