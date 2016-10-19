@@ -17,7 +17,7 @@ import java.io.OutputStream;
  * @author ian
  */
 public class energyPredictor {
-    public void calculate_Energy(String miRNA_id, String miRNA, String rev_mre, String lncRNA_id, String lncRNA, int position){
+    public void calculate_Energy(String miRNA_id, String miRNA, String rev_mre, String lncRNA_id, String lncRNA, int position) throws IOException{
         String line;
         String execstr = "RNAcofold -p --noPS"; ///Revisar diferencia con RNAfold LLLLL, diferencias en energía -> free energy of another regions
         String seq = miRNA+"&"+rev_mre;

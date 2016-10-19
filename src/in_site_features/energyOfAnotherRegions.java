@@ -48,8 +48,67 @@ public class energyOfAnotherRegions {
         
         String seq1=miRNA_Region3+"&"+lncRNA_Region3;
         String seq2=miRNA_Region5+"&"+lncRNA_Region5;
+        System.out.println(seq1);
+        System.out.println(seq2);
+        try{
+            Process p2 = Runtime.getRuntime().exec(execstr);
+
+            // Get input 
+            BufferedReader input_buffer = new BufferedReader(new InputStreamReader(p2.getInputStream()));
+
+            // Generate response to command
+            OutputStream ops = p2.getOutputStream();
+            ops.write(seq1.getBytes());
+            ops.close();         
+            
+            while ((line = input_buffer.readLine()) != null){
+            
+                if (line.indexOf("-") != -1) {
+                    String[] parts = line.split("-");
+                    String number = parts[1]; //minimum free energy / free energy ensemble /delta G binding
+                    if(number.charAt(number.length()-1)== ')' || number.charAt(number.length()-1)==']'){//Limpia número de paréntesis
+                        number=number.substring(0,number.length()-1);
+                    }
+                    if (flag == 0) {//-->Mínimum free energy
+                        flag++;
+                        mfe_Region3 = Float.parseFloat(number);
+                        mfe_Region3 = mfe_Region3*-1.0f; 
+                        System.out.println(mfe_Region3);       
+                    }
+                    
+                }
+            
+            }
+            /*
+            Process p3 = Runtime.getRuntime().exec(execstr);
+            BufferedReader input_buffer2 = new BufferedReader(new InputStreamReader(p3.getInputStream()));
+            OutputStream ops2 = p2.getOutputStream();
+            ops2.write(seq2.getBytes());
+            ops2.close(); 
+            while ((line = input_buffer.readLine()) != null){
+            
+                if (line.indexOf("-") != -1) {
+                    String[] parts = line.split("-");
+                    String number = parts[1]; //minimum free energy / free energy ensemble /delta G binding
+                    if(number.charAt(number.length()-1)== ')' || number.charAt(number.length()-1)==']'){//Limpia número de paréntesis
+                        number=number.substring(0,number.length()-1);
+                    }
+                    if (flag == 0) {//-->Mínimum free energy
+                        flag++;
+                        mfe_Region5 = Float.parseFloat(number);
+                        mfe_Region5 = mfe_Region3*-1.0f; 
+                        System.out.println(mfe_Region5);       
+                    }
+                    
+                }
+            
+            }*/
+        input_buffer.close();
+            
+        }catch(IOException e){
+        System.out.println("IOException");
         
-        
+        }
         
     }
 }
