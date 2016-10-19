@@ -28,16 +28,25 @@ public class matchCounter {
         int miRNA_bulge=0, lncRNA_bulge=0;
         System.out.println(sequence);
         System.out.println(miRNA_code);
-        
-      /*  while(miRNA_code.charAt(k)!='|'){
+        StringBuilder builder = new StringBuilder();
+        StringBuilder builder2 = new StringBuilder();
+
+        while(miRNA_code.charAt(k)!='|'){
+            
            if(miRNA_code.charAt(k)==')'){
-               String[] aux = miRNA_code.split(")");
-               miRNA_code = aux[0]+"||||";
-               break;
+               builder.append('|');
+               builder2.append('|');
+            
+            }else{
+               builder.append(miRNA_code.charAt(k));
+               builder2.append(lncRNA_code.charAt(k));
            }
            k++;
         }
-        System.out.println(miRNA_code);*/
+           
+        
+        System.out.println(builder);
+        System.out.println(builder2);
         while(i<miRNA_length && j<lncRNA_length && miRNA_code.charAt(i)!='|' && lncRNA_code.charAt(j)!='|'){
             
             if(miRNA_code.charAt(i) == lncRNA_code.charAt(j) || miRNA_code.charAt(i)=='(' && lncRNA_code.charAt(j)== ')'){

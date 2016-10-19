@@ -5,6 +5,7 @@
  */
 package common_Features;
 
+import in_site_features.energyOfAnotherRegions;
 import in_site_features.matchCounter;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -56,8 +57,8 @@ public class energyPredictor {
                 flag++;
                 dg_duplex = Float.parseFloat(number);
                 dg_duplex = dg_duplex*-1.0f; 
-                matchCounter mc = new matchCounter();
-                mc.counter(seq, parts[0]);              
+                //matchCounter mc = new matchCounter();
+                //mc.counter(seq, parts[0]);              
             }
             else if (flag == 1){ //-->Free energy of ensemble
                 flag++;
@@ -74,8 +75,9 @@ public class energyPredictor {
     }catch(IOException e){
         System.out.println("IOException");
     }
-        accessibilityPredictor ap = new accessibilityPredictor();
-        ap.accessibilityEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
-        
+        //accessibilityPredictor ap = new accessibilityPredictor();
+        //ap.accessibilityEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
+        energyOfAnotherRegions eoar = new energyOfAnotherRegions();
+        eoar.calculateEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
     }
 }
