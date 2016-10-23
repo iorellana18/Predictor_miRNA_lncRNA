@@ -47,7 +47,7 @@ public class energyPredictor {
         /////////////////////////////////////////////////
         while ((line = input_buffer.readLine()) != null){
             
-            if (line.indexOf("-") != -1) {
+            if (line.contains("-")) {
                 String[] parts = line.split("-");
                 String number = parts[1]; //minimum free energy / free energy ensemble /delta G binding
                 if(number.charAt(number.length()-1)== ')' || number.charAt(number.length()-1)==']'){//Limpia número de paréntesis
@@ -57,15 +57,15 @@ public class energyPredictor {
                 flag++;
                 dg_duplex = Float.parseFloat(number);
                 dg_duplex = dg_duplex*-1.0f; 
-                //matchCounter mc = new matchCounter();
-                //mc.counter(seq, parts[0]);              
+                matchCounter mc = new matchCounter();
+                mc.counter(seq, parts[0]);              
             }
             else if (flag == 1){ //-->Free energy of ensemble
                 flag++;
                 dg_binding = Float.parseFloat(number);
                 dg_binding = dg_binding*-1.0f;
                 //System.out.println("DeltaG binding: " + dg_binding + " kcal/mol");
-                
+                 
             }//---> delta G binding
                 //System.out.println("Minimum Free Energy: " + final_value + " kcal/mol");
             }
@@ -77,7 +77,7 @@ public class energyPredictor {
     }
         //accessibilityPredictor ap = new accessibilityPredictor();
         //ap.accessibilityEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
-        energyOfAnotherRegions eoar = new energyOfAnotherRegions();
-        eoar.calculateEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
+        //energyOfAnotherRegions eoar = new energyOfAnotherRegions();
+        //eoar.calculateEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
     }
 }

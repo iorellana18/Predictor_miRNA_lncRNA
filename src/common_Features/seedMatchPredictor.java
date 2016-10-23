@@ -1,5 +1,7 @@
 package common_Features;
 
+import java.io.IOException;
+
 /**
  *
  * @author ian
@@ -44,7 +46,7 @@ public class seedMatchPredictor {
 }
    
     //7mer-m8, Pareamiento WC en nucleótidos 2 a 8 de miRNA (5'-3')
-    public void SeedDefault(String cadena){
+    public void SeedDefault(String cadena) throws IOException{
         String[] parts = cadena.split("LLLL");
         String miRNA_id = parts[0];
         String miRNA = parts[1];
@@ -91,7 +93,7 @@ public class seedMatchPredictor {
     }
     
     //6mer, Pareamiento WC en nucleótidos 2 a 7 de miRNA (5'-3') 
-    public void sixMer(String cadena){
+    public void sixMer(String cadena) throws IOException{
         String[] parts = cadena.split("LLLL");
         String miRNA_id = parts[0];
         String miRNA = parts[1];
@@ -136,7 +138,7 @@ public class seedMatchPredictor {
     
     //7mer-A1, Pareamiento WC en nucleótidos 2 a 7 de miRNA (5'-3')
     //sumado a una A frente al nucleótido 1 de miRNA
-    public void sevenMerA1(String cadena){
+    public void sevenMerA1(String cadena) throws IOException{
         String[] parts = cadena.split("LLLL");
         String miRNA_id = parts[0];
         String miRNA = parts[1];
@@ -179,7 +181,7 @@ public class seedMatchPredictor {
     
     //8mer, Pareamiento WC en nucleótidos 2 a 8 de miRNA (5'-3')
     //sumado a una A frente al nucleótido 1 de miRNA
-    public void eightMer(String cadena){
+    public void eightMer(String cadena) throws IOException{
         String[] parts = cadena.split("LLLL");
         String miRNA_id = parts[0];
         String miRNA = parts[1];
