@@ -4,6 +4,7 @@ import common_Features.seedMatchPredictor;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Predictor_miRNALncRNA {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //Lee archivos .fa y los guarda en buffer
         FileReader miRNA_Reader, lnc_Reader;
         ArrayList<String> miRNA = new ArrayList();

@@ -56,9 +56,10 @@ public class energyPredictor {
             if (flag == 0) {//-->Mínimum free energy
                 flag++;
                 dg_duplex = Float.parseFloat(number);
-                dg_duplex = dg_duplex*-1.0f; 
+                dg_duplex = dg_duplex*-1.0f;
                 matchCounter mc = new matchCounter();
-                mc.counter(seq, parts[0]);              
+                mc.counter(seq, parts[0]);     
+                System.out.println(dg_duplex);
             }
             else if (flag == 1){ //-->Free energy of ensemble
                 flag++;
@@ -75,8 +76,8 @@ public class energyPredictor {
     }catch(IOException e){
         System.out.println("IOException");
     }
-        //accessibilityPredictor ap = new accessibilityPredictor();
-        //ap.accessibilityEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
+        accessibilityPredictor ap = new accessibilityPredictor();
+        ap.accessibilityEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
         //energyOfAnotherRegions eoar = new energyOfAnotherRegions();
         //eoar.calculateEnergy(miRNA_id, miRNA, lncRNA_id, lncRNA, rev_mre, position, dg_binding, dg_duplex);
     }

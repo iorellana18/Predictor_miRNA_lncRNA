@@ -67,10 +67,9 @@ public class seedMatchPredictor {
         //Obtiene miRNA Recognition Element
         while( sup <= lncRNA_size ){
             String lncRNA_window = rev_lncRNA.substring(inf,sup); //3'-5'
-            String lncRNA_comp = complementSeq(lncRNA_window); //3'-5'
+            String lncRNA_comp = complementSeq(lncRNA_window);   //3'-5'
             if(miRNA_seed.equals(lncRNA_comp)){ //seed: 5'-3' y lncRNA_com en 3'-5'
                     //Condiciones de borde (izq y derecha)
-                    
                     if( (sup+(miRNA.length()-8)) <= rev_lncRNA.length() && (inf-1) >= 0 ){ 
                         String lncRNACompleteWindow = rev_lncRNA.substring(inf-1,sup+miRNA.length()-8);
                         //miRNA Recognition Element
